@@ -1,0 +1,13 @@
+com\capgemini\map\horizon\controller\RestClient.class
+com\capgemini\map\horizon\batch\LocationItemProcessor$RETRY.class
+com\capgemini\map\horizon\batch\LocationItemProcessor$1.class
+com\capgemini\map\horizon\batch\LocationDataWriter.class
+com\capgemini\map\horizon\FindApplication.class
+com\capgemini\map\horizon\repository\FindRepository.class
+com\capgemini\map\horizon\config\FindConfig.class
+com\capgemini\map\horizon\controller\FindController.class
+com\capgemini\map\horizon\config\ExtractLocationDataJob.class
+com\capgemini\map\horizon\batch\LocationFieldSetMapper.class
+com\capgemini\map\horizon\batch\LocationItemProcessor.class
+com\capgemini\map\horizon\model\Details.class
+com\capgemini\map\horizon\service\FindService.class

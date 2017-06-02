@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-default" style="z-index: 1233;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Horizon Blues</a>
+		</div>
+
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<select class="form-control" ng-model="item" ng-change="filterByCategory()" ng-init="item = 'all'">
+						<option value="all">Select category</option>
+						<option ng-repeat="main in mainData | unique:'specialtyValue'" ng-value="{{main.specialty}}">
+							{{main.specialty}}
+						</option>
+					</select>
+					<input type="text" class="form-control" ng-model="zipCode"
+						placeholder="Enter Zip">
+				</div>
+				<button type="submit" ng-click="submitZip(zipCode)"
+					class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</nav>
+<div class="col-sm-4" id="left">
+<treasure-overlay-spinner active='spinner.active'>
+	<br>
+	
+	<input type="text" class="form-control" ng-model="search"
+						placeholder="Enter Keyword">
+	<div ng-repeat="main in itemsPerPage | filter : search" specialty = "{{main.specialty}}" ng-show="!filterView[$index]">
+		<div class="card-style" ng-click="openInfoWindow($event, main.marker)">
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading">{{main.name}}</h4>
+					<h5 class="media-heading">{{main.address}},
+						{{main.city}}, {{main.county}},
+						{{main.zip}}</h5>
+					<div class="members">
+						<h5>{{main.plan}}</h5>
+					</div>
+					<div class="btn btn-sm btn-primary btn-part"  ng-style="{'background-color': main.color}">{{main.specialty}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+        <div class="text-center">
+
+            <ul ng-if="pager.totalPages > 1" class="pagination" style="margin: 0px;">
+                <li ng-class="{disabled:pager.currentPage === 1}">
+                    <a ng-click="setPage(1)">First</a>
+                </li>
+                <li ng-class="{disabled:pager.currentPage === 1}">
+                    <a ng-click="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                    <a ng-click="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+                    <a ng-click="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
+</div>
+<div class="col-sm-8" id="right"></div>

@@ -1,0 +1,4 @@
+---
+applications:
+- name: map-horizon
+  path: target/map-horizan-blue-1.0.war

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Horizon</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="bower_components/bootstrap/dist/css/bootstrap.css"
+	id="bootstrap-css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="treasure-overlay-spinner.css">
+
+<!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="treasure-overlay-spinner.js"></script>
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="app.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+
+<body>
+	<div class="site-wrapper" ng-show="first" ng-controller="View1Ctrl">
+		<div class="site-wrapper-inner">
+			<div class="cover-container">
+				<div class="masthead clearfix">
+					<div class="inner"></div>
+				</div>
+
+				<div class="inner cover">
+					<h1 class="cover-heading" style="size: 60px;color:white">Welcome to
+						Horizon Blue Cross Blue Shield of New Jersey</h1>
+
+					<treasure-overlay-spinner active='spinner.active'/>
+					<form class="navbar-form navbar-center" role="search">
+						<div class="lead">
+							<input type="radio" ng-model="searchBy" value="auto" ng-change="changeSearchBy(searchBy)">
+							Search by current location
+							<br/>
+							<input type="radio" ng-model="searchBy" value="manual" ng-change="changeSearchBy(searchBy)">
+							Search by below details
+						</div>
+						<div class="form-group">
+							<input ng-disabled="isDisabled" type="text" class="form-control" ng-model="zipCode"
+								placeholder="Enter Zip">
+							OR
+							<input ng-disabled="isDisabled" type="text" class="form-control" ng-model="cityName"
+								placeholder="Enter City Name">
+							OR
+							<input ng-disabled="isDisabled" type="text" class="form-control" ng-model="stateName"
+								placeholder="Enter State Name">
+							<button type="submit" ng-click="submitZip(zipCode, cityName, stateName)"
+								class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="mastfoot">
+					<div class="inner">
+						<!-- Validation -->
+
+
+
+						<p>© 2017 Capgemini</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div ng-view></div>
+</body>
+</html>
